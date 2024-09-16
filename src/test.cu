@@ -1,5 +1,11 @@
-#include <iostream>
-int main(){
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+#include <cstdio>
+
+__global__ void kernel() {
+  printf("Hello, world!\n");
+}
+
+int main() {
+  kernel<<<1, 1>>>();
+  cudaDeviceSynchronize();
+  return 0;
 }
